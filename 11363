@@ -22,8 +22,7 @@ D_min = aMax + 1  # минимальная разница не кратная 3 
 N = int(input())  # количество пар
 
 for i in range(N):
-    a = int(input())  # ввод пары чисел
-    b = int(input())
+    a, b = map(int, input().split())  # ввод пары чисел через пробел
 
     # находим max и min в паре
     if a > b:
