@@ -6,10 +6,11 @@
 Если получить требуемую сумму невозможно, в качестве ответа нужно выдать 0.
 '''
 
-a = [[[0] * 6] for i in range(2)]
+# формируем матрицу 6х2
+a = [[0] * 6 for i in range(2)]
 
 for i in range(6):
-    a, b = map(int, input().split())
+    a[0][i], a[1][i] = map(int, input().split())
 
 sMax = 0
 
@@ -19,10 +20,8 @@ for i1 in range(2):
             for i4 in range(2):
                 for i5 in range(2):
                     for i6 in range(2):
-                        s:=a[1,i1]+a[2,i2]+a[3,i3]+a[4,i4]+a[5,i5]+a[6,i6];
+                        s = a[i1][0] + a[i2][1] + a[i3][2] + a[i4][3] + a[i5][4] + a[i6][5]
+                        if (s % 3 != 0) and (s > sMax):
+                            sMax = s
 
-if (s mod 3 <> 0) and (s > sMax) then sMax := s
-
-writeln(sMax)
-
-end.
+print(sMax)
