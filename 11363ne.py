@@ -9,11 +9,13 @@
 # формируем матрицу 6х2
 a = [[0] * 6 for i in range(2)]
 
+# заполняем матрицу
 for i in range(6):
     a[0][i], a[1][i] = map(int, input().split())
 
 sMax = 0
 
+# перебираем все возможные варианты комплектов по 6 значений
 for i1 in range(2):
     for i2 in range(2):
         for i3 in range(2):
