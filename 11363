@@ -28,7 +28,6 @@ for i in range(N):
     if a > b:
         Max = a
         Min = b
-
     else:
         Max = b
         Min = a
