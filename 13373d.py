@@ -10,12 +10,15 @@
 
 '''
 Динамически обрабатываем все входные данные.
-Берем очередное число. 
-Находим его кратность. Если оно самое большое среди таких чисел, то:
-   а) проверяем не является ли его произведение с максимумами, с которыми
-       он дает число кратное 26, максимальным. Если да, то записываем
-       произведение в MX
-   б) перезаписываем соответствующий mx_?_
+Берем очередное (текущее) число и находим его кратность.
+Проверяем не является ли его произведение с максимумами, 
+    с которыми он дает число кратное 26, максимальным.
+    Если да, то записываем произведение в MX.
+    (важно проверять произведение уже здесь, т.к. возможна ситуация, 
+    когда два самых больших числа кратны 26 и второе по величине число
+    идет после первого).
+Если текущее число самое большое среди чисел такой кратности, 
+    то перезаписываем соответствующий mx_?_
 '''
 
 # максимумы кратные: 26, 13 и 2 (но не кратные 26).
@@ -31,27 +34,27 @@ with open('13373_data.txt') as f:
         current = int(f.readline())
 
         if current % 26 == 0:
+            if current * max(max0, max2, max13, max26) > MX:
+                MX = current * max(max0, max2, max13, max26)
             if current > max26:
-                if current * max(max0, max2, max13, max26) > MX:
-                    MX = current * max(max0, max2, max13, max26)
                 max26 = current
 
         elif current % 13 == 0:
+            if current * max(max2, max26) > MX:
+                MX = current * max(max2, max26)
             if current > max13:
-                if current * max(max2, max26) > MX:
-                    MX = current * max(max2, max26)
                 max13 = current
 
         elif current % 2 == 0:
+            if current * max(max13, max26) > MX:
+                MX = current * max(max13, max26)
             if current > max2:
-                if current * max(max13, max26) > MX:
-                    MX = current * max(max13, max26)
                 max2 = current
 
         else:
+            if current * max26 > MX:
+                MX = current * max26
             if current > max0:
-                if current * max26 > MX:
-                    MX = current * max26
                 max0 = current
 
 print(MX)
