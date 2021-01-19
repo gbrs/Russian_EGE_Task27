@@ -21,7 +21,7 @@ n0 - количество чисел некратных ни одному из �
 n14 = n7 = n2 = n0 = 0
 pairs = 0
 
-with open('15867_data') as f:
+with open('15867_data.txt') as f:
     N = int(f.readline())
     for i in range(N):
         current = int(f.readline())

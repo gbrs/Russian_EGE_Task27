@@ -17,7 +17,7 @@ n2 и n26 (все четные числа). Делится только на 2 -
 n26 = n13 = n2 = n1 = 0
 pairs = 0
 
-with open('13754_data') as f:
+with open('13754_data.txt') as f:
     N = int(f.readline())
     for i in range(N):
         current = int(f.readline())
