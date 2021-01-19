@@ -16,7 +16,9 @@
     Если да, то записываем произведение в MX.
     (важно проверять произведение уже здесь, т.к. возможна ситуация, 
     когда два самых больших числа кратны 26 и второе по величине число
-    идет после первого).
+    идет после первого. Но может это важно только для кратных 26:
+    только они сами с собой могут умножаться? Тогда, с начала можно
+    проверять на максимум числа и только потом на максимум произведения).
 Если текущее число самое большое среди чисел такой кратности, 
     то перезаписываем соответствующий mx_?_
 '''
@@ -40,21 +42,21 @@ with open('13373_data.txt') as f:
                 max26 = current
 
         elif current % 13 == 0:
-            if current * max(max2, max26) > MX:
-                MX = current * max(max2, max26)
             if current > max13:
+                if current * max(max2, max26) > MX:
+                    MX = current * max(max2, max26)
                 max13 = current
 
         elif current % 2 == 0:
-            if current * max(max13, max26) > MX:
-                MX = current * max(max13, max26)
             if current > max2:
+                if current * max(max13, max26) > MX:
+                    MX = current * max(max13, max26)
                 max2 = current
 
         else:
-            if current * max26 > MX:
-                MX = current * max26
             if current > max0:
+                if current * max26 > MX:
+                    MX = current * max26
                 max0 = current
 
 print(MX)
